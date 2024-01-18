@@ -6,28 +6,4 @@ var StringFormat = "Hello {0}!";
 
 var formated_string = String.Format(StringFormat, "World");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Console.WriteLine(formated_string);
