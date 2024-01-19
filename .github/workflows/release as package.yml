@@ -26,4 +26,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with: 
         name: packages
-        path: ./CSharperHuskyTest/ConsoleApp1/bin/Release/ConsoleApp0.0.1.nupkg
+        path: ./ConsoleApp1/bin/Release/ConsoleApp0.0.1.nupkg
