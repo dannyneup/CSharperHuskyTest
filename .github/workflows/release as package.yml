@@ -29,7 +29,6 @@ jobs:
           
       - name: Build solution and generate NuGet package
         run: dotnet pack -c Release 
-        working-directory: ./CSharperHuskyTest
 
       - name: Push generated package to GitHub registry
         run: dotnet nuget push ./Examples.Publish.NuGet/out/*.nupkg --skip-duplicate --no-symbols true
