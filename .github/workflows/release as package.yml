@@ -28,9 +28,8 @@ jobs:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}        
           
       - name: Build solution and generate NuGet package
-        run: |  
-          cd Examples.Publish.NuGet
-          dotnet pack -c Release -o out  
+        run: dotnet pack -c Release 
+        working-directory: ./CSharperHuskyTest
 
       - name: Push generated package to GitHub registry
         run: dotnet nuget push ./Examples.Publish.NuGet/out/*.nupkg --skip-duplicate --no-symbols true
