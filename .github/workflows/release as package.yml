@@ -21,7 +21,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet pack -c Release /p:NuGetVersion=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/tag/${{ github.event.release.tag_name }}"
+      run: dotnet pack -c Release /p:NuGetVersion=0.0.1 /p:PackageReleaseNotes="See $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/tag/${{ github.event.release.tag_name }}"
     - name: Archive NuGet Package
       uses: actions/upload-artifact@v1
       with: 
