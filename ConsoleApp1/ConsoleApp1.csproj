@@ -5,7 +5,11 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-    </PropertyGroup>
+        <Version>$(Version)</Version>
+        <Authors>Danny</Authors>
+        <Description>This is a Test-Package</Description>
+        <PackageId>TestPackage</PackageId>
+      </PropertyGroup>
 
     <Target Name="husky" BeforeTargets="Restore;CollectPackageReferences" Condition="'$(HUSKY)' != 0 AND '$(GITHUB_ACTIONS)' != 'true'">
         <Exec Command="dotnet tool restore"  StandardOutputImportance="Low" StandardErrorImportance="High"/>
