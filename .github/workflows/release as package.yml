@@ -28,7 +28,7 @@ jobs:
           NUGET_AUTH_TOKEN: ${{secrets.PACKAGE_REGISTRY_TOKEN}} 
           
       - name: Build solution and generate NuGet package
-        run: dotnet pack -c Release 
+        run: dotnet pack -c Release /p:Version=0.0.1
         working-directory: ./ConsoleApp1
 
       - name: Push generated package to GitHub registry
