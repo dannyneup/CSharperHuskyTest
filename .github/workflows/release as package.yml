@@ -2,7 +2,13 @@ name: publish nuget package
 
 on:
   push:
-    branches: master
+    branches: 
+      - main
+      - develop
+  pull_request: 
+    branches:
+      - main
+      - develop
 
 jobs:
   build:
