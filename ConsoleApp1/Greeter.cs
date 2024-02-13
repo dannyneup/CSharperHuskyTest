@@ -13,7 +13,7 @@ public class Greeter
             0 => "World",
             1 => "Husky",
             2 => "Snake",
-            3 => "Turtlee",
+            3 => "Turtle",
             _ => ""
         };
 
