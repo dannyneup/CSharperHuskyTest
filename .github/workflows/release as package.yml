@@ -34,11 +34,11 @@ jobs:
           dotnet-version: 8.0.*
           source-url: https://nuget.pkg.github.com/dannyneup/index.json
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+          NUGET_AUTH_TOKEN: ${{secrets.PACKAGE_REGISTRY_TOKEN}} 
           
       - name: Build solution and generate NuGet package
         run: dotnet pack -c Release
         working-directory: ./ConsoleApp1
 
       - name: Push generated package to GitHub registry
-        run: dotnet nuget push ./ConsoleApp1/bin/Release/*.nupkg --api-key ${{secrets.GITHUB_TOKEN}}
+        run: dotnet nuget push ./ConsoleApp1/bin/Release/*.nupkg --api-key ${{secrets.PACKAGE_REGISTRY_TOKEN}}
