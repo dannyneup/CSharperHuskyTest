@@ -1,0 +1,7 @@
+assembly-versioning-scheme: MajorMinorPatchTag
+mode: ContinuousDelivery
+branches:
+  Develop:
+    increment: Patch
+ignore:
+  sha: []
