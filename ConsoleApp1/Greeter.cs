@@ -6,21 +6,18 @@ public class Greeter
 
     public void Greet()
     {
-        string stringFormat = "Hello {0}!";
-        var word = "";
+        var stringFormat = "Hello {0}!";
 
-        switch (_rand.Next(2))
+        var word = _rand.Next(3) switch
         {
-            case 0:
-                word = "World";
-                break;
-            case 1:
-                word = "Husky";
-                break;
-        }
+            0 => "World",
+            1 => "Husky",
+            2 => "Snake",
+            _ => ""
+        };
 
-        var formatedString = String.Format(stringFormat, word);
+        var formattedString = string.Format(stringFormat, word);
 
-        Console.WriteLine(formatedString);
+        Console.WriteLine(formattedString);
     }
 }
