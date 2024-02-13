@@ -1,7 +1,7 @@
 assembly-versioning-scheme: MajorMinorPatch
 mode: ContinuousDelivery
 branches:
-  develop:
+  main:
     increment: Patch
 ignore:
   sha: []
