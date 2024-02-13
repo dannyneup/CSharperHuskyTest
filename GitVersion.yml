@@ -1,7 +1,9 @@
 assembly-versioning-scheme: MajorMinorPatchTag
+tag-prefix: v
 mode: ContinuousDelivery
 branches:
   Develop:
+    regex: ^develop$
     increment: Patch
 ignore:
   sha: []
