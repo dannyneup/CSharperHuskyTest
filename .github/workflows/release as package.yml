@@ -24,8 +24,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        run: git fetch --unshallow
 
       - name: Setup .NET Core @ Latest
         uses: actions/setup-dotnet@v4
