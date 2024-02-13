@@ -22,8 +22,8 @@ public class Greeter
                 break;
         }
 
-        var formatedString = String.Format(stringFormat, word);
+        var formattedString = String.Format(stringFormat, word);
 
-        Console.WriteLine(formatedString);
+        Console.WriteLine(formattedString);
     }
 }
