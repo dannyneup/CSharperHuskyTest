@@ -8,11 +8,12 @@ public class Greeter
     {
         var stringFormat = "Hello {0}!";
 
-        var word = _rand.Next(3) switch
+        var word = _rand.Next(4) switch
         {
             0 => "World",
             1 => "Husky",
             2 => "Snake",
+            3 => "Turtle",
             _ => ""
         };
 
