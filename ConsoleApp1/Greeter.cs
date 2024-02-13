@@ -9,13 +9,16 @@ public class Greeter
         string stringFormat = "Hello {0}!";
         var word = "";
 
-        switch (_rand.Next(2))
+        switch (_rand.Next(3))
         {
             case 0:
                 word = "World";
                 break;
             case 1:
                 word = "Husky";
+                break;
+            case 2:
+                word = "Snake";
                 break;
         }
 
