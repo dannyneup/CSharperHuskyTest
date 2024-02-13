@@ -5,11 +5,17 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Version>$(Version)</Version>
         <Authors>Danny</Authors>
         <Description>This is a Test-Package</Description>
         <PackageId>TestPackage</PackageId>
       </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
 
     <Target Name="husky" BeforeTargets="Restore;CollectPackageReferences" Condition="'$(HUSKY)' != 0 AND '$(GITHUB_ACTIONS)' != 'true'">
         <Exec Command="dotnet tool restore"  StandardOutputImportance="Low" StandardErrorImportance="High"/>
