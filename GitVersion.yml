@@ -4,7 +4,7 @@ branches:
     regex: ^release$
     tag: rc
   pull-request:
-    tag: PR
+    tag: PR_
 ignore:
   sha: []
 merge-message-formats: {}
