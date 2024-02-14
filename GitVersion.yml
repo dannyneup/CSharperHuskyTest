@@ -1,9 +1,8 @@
-assembly-versioning-scheme: MajorMinorPatchTag
-tag-prefix: v
 mode: ContinuousDelivery
-branches:
-  Develop:
-    regex: ^develop$
-    increment: Patch
+branches: 
+  develop: 
+    regex: ^release$
+    tag: rc
 ignore:
   sha: []
+merge-message-formats: {}
