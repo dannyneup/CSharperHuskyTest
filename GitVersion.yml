@@ -3,6 +3,8 @@ branches:
   develop: 
     regex: ^release$
     tag: rc
+  pull-request:
+    tag: PR
 ignore:
   sha: []
 merge-message-formats: {}
