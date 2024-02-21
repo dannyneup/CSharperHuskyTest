@@ -20,7 +20,11 @@ jobs:
           name: library
           path: .
           
+      - uses: gittools/actions/gitversion/execute@v0
+        id: gitversion
+          
       - uses: softprops/action-gh-release@v0.1.15
         with:
+          tag_name: ${{ steps.gitversion.outputs.semVer }}
           files: "*.dll"
         
