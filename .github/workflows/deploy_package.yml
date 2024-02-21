@@ -21,9 +21,9 @@ jobs:
         run: dotnet build --configuration Release
       - name: publish artifact
         uses: actions/upload-artifact@v4
-        with: 
-         name: ConsoleApp
-         path: '**/Release/**/*.exe'
+        with:
+          name: library
+          path: '**/Release/**/*.dll'
   
   deploy:
     needs: build
