@@ -18,6 +18,7 @@ jobs:
         with:
           workflow: 'deploy_package.yml'
           name: ConsoleApp
+          path: ./
           
       - uses: gittools/actions/gitversion/setup@v0
         with:
