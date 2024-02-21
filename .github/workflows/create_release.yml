@@ -4,16 +4,10 @@ on:
   push:
     branches:
       - main
-  workflow_run: 
-    types:
-      - completed
-    workflows:
-      - deploy_package.yml
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event.workflow_run.conclusion == 'success'
     steps:
       - uses: actions/checkout@v4
         with:
