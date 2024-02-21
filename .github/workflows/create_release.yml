@@ -17,7 +17,7 @@ jobs:
       - uses: dawidd6/action-download-artifact@v3
         with:
           workflow: 'deploy_package.yml'
-          name: library
+          name: ConsoleApp
           
       - uses: gittools/actions/gitversion/setup@v0
         with:
