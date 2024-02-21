@@ -20,6 +20,8 @@ jobs:
           name: library
           path: .
           
+      - uses: gittools/actions/gitversion/setup@v0
+          
       - uses: gittools/actions/gitversion/execute@v0
         id: gitversion
           
