@@ -1,4 +1,4 @@
-name: publish nuget package
+name: Deploy package
 
 on:
   push:
