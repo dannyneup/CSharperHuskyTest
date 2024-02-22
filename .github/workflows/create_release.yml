@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: ${{ github.ref }} == 'refs/heads/main' && ${{ github.event.workflow_run.event }} == 'push'
+    if: false
     steps:
       - run: |
           echo ${{ github.event.workflow_run.event }}
