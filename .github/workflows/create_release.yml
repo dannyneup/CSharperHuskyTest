@@ -18,7 +18,6 @@ jobs:
           
       - uses: actions/download-artifact@v4
         with: 
-          name: ConsoleApp
           run-id: ${{ github.event.workflow_run.id }}
 
       - uses: gittools/actions/gitversion/setup@v0
