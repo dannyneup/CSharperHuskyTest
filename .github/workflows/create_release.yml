@@ -32,5 +32,5 @@ jobs:
         with:
           tag_name: ${{ steps.gitversion.outputs.semVer }}
           files: "**/bin/Release/**/*.exe"
-          generate_release_notes: false
+          body: ""
         
