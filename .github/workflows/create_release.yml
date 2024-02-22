@@ -12,9 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ${{ github.event.workflow_run.event }}
-          echo ${{ github.event.workflow_run.github.ref }}
-          echo ${{ github.event.workflow_run.github.ref_name }}
+          {
+            echo ${{ github.event.workflow_run.event }}
+            echo ${{ github.event.workflow_run.github.ref }}
+            echo ${{ github.event.workflow_run.github.ref_name }}
+          }
         
       - uses: actions/checkout@v4
         with:
