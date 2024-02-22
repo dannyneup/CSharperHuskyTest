@@ -18,7 +18,8 @@ public class Greeter
             3 => "Turtle",
             4 => "Elephant",
             5 => "Chameleon",
-            _ => ""
+            6 => "Human",
+            _ => "_"
         };
 
         var formattedString = string.Format(stringFormat, word);
