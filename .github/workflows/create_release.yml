@@ -7,29 +7,25 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          fetch-tags: true
           
-      - uses: dawidd6/action-download-artifact@v3
-        with:
-          workflow: 'deploy_package.yml'
-          name: ConsoleApp
-          
+      - name: Build project
+        run: dotnet build --configuration Release
+
       - uses: gittools/actions/gitversion/setup@v0
         with:
           versionSpec: '5.12.0'
-      
+
       - uses: gittools/actions/gitversion/execute@v0
         id: gitversion
-          
+
       - uses: softprops/action-gh-release@v0.1.15
         with:
           tag_name: ${{ steps.gitversion.outputs.semVer }}
-          files: "**/*.dll"
-          body: ""
-          target_commitish: ""
+          files: "**/bin/Release/**/*.exe"
+          generate_release_notes: false
         
