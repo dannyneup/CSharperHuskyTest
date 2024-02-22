@@ -2,9 +2,8 @@ name: Deploy package
 
 on:
   push:
-    branches: 
+    branches:
       - main
-      - develop
   pull_request: 
     branches:
       - main
