@@ -1,0 +1,10 @@
+mode: ContinuousDelivery
+branches: 
+  release:
+    regex: ^releases?[/-]?
+    tag: RC
+  pull-request:
+    tag: PR
+ignore:
+  sha: []
+merge-message-formats: {}
