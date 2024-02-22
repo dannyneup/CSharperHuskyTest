@@ -9,9 +9,12 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     if: github.ref_name == 'main' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event != 'pull_request'
     steps:
+      - run: 
+          echo ${{ github.event.workflow_run }}
+        
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
