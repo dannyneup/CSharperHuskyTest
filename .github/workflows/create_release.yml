@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
-          echo ${{ github.ref }}
+          echo ${{ github.event.workflow_run.head_branch }}
           echo ${{ github.ref_name }}
      
       
