@@ -10,14 +10,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: false
+    if: ${{ github.ref == 'refs/heads/main' && github.event.workflow_run.event == 'push' }}
     steps:
-      - run: |
-          echo ${{ github.event.workflow_run.event }}
-          echo ${{ github.event.workflow_run.pull_request.base.ref }}
-          echo ${{ github.ref }}
-          echo ${{ github.ref_name }}
-        
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
