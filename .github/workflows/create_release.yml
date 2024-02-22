@@ -1,20 +1,25 @@
 name: Create release
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run: 
+    workflows:
+      - 'Deploy Package'
+    types:
+      - completed
 
 jobs:
   build:
     runs-on: windows-latest
+    if: github.ref == 'refs/heads/main' && github.event.workflow_run.conclusion == 'success'
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           
-      - name: Build project
-        run: dotnet build --configuration Release
+      - uses: actions/download-artifact@v4
+        with: 
+          name: ConsoleApp
+          run-id: ${{ github.event.workflow_run.id }}
 
       - uses: gittools/actions/gitversion/setup@v0
         with:
