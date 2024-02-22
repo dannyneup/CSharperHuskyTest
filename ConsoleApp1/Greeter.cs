@@ -17,6 +17,7 @@ public class Greeter
             2 => "Snake",
             3 => "Turtle",
             4 => "Elephant",
+            5 => "Chameleon",
             _ => ""
         };
 
