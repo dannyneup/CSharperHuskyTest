@@ -18,13 +18,13 @@ jobs:
           fetch-depth: 0
           
       - name: Build project
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Release --output /Release
         
       - name: publish artifact
         uses: actions/upload-artifact@v4
         with:
           name: ConsoleApp
-          path: '**/bin/Release/net8.0/'
+          path: '/Release'
   
   deploy:
     needs: build
