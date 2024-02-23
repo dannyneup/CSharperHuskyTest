@@ -24,7 +24,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ConsoleApp
-          path: '**/bin/Release/**/*.exe'
+          path: '**/bin/Release/net8.0/'
   
   deploy:
     needs: build

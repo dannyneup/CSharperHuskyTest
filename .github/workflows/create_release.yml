@@ -31,5 +31,5 @@ jobs:
       - uses: softprops/action-gh-release@v0.1.15
         with:
           tag_name: ${{ steps.gitversion.outputs.semVer }}
-          files: "**/bin/Release/**/*.exe"
+          files: "**/bin/Release/net8.0/"
         
