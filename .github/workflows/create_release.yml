@@ -34,11 +34,16 @@ jobs:
         with: 
          files: 'Release/'
          dest: 'ConsoleApp-${{ steps.gitversion.outputs.semVer }}.zip'
+         
+      - uses: ericcornelissen/git-tag-annotation-action@v2.0.6
+        id: tag-data
+        with: 
+         tag: ${{ steps.gitversion.outputs.semVer }}
+        continue-on-error: true
 
       - uses: softprops/action-gh-release@v0.1.15
         with:
           tag_name: ${{ steps.gitversion.outputs.semVer }}
           name: "ConsoleApp-${{ steps.gitversion.outputs.semVer }}"
           files: "ConsoleApp-${{ steps.gitversion.outputs.semVer }}.zip"
-          generate_release_notes: true
-        
+          body: ${{ steps.tag-data.outputs.git-tag-annotation }}
