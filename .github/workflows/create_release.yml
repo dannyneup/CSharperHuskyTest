@@ -32,11 +32,11 @@ jobs:
       - uses: vimtor/action-zip@v1.2
         with: 
          files: 'Release/'
-         dest: 'ConsoleApp.zip'
+         dest: 'ConsoleApp-${{ steps.gitversion.outputs.semVer }}.zip'
 
       - uses: softprops/action-gh-release@v0.1.15
         with:
           tag_name: ${{ steps.gitversion.outputs.semVer }}
           name: "ConsoleApp-${{ steps.gitversion.outputs.semVer }}"
-          files: "ConsoleApp.zip"
+          files: "ConsoleApp-${{ steps.gitversion.outputs.semVer }}.zip"
         
