@@ -40,4 +40,5 @@ jobs:
           tag_name: ${{ steps.gitversion.outputs.semVer }}
           name: "ConsoleApp-${{ steps.gitversion.outputs.semVer }}"
           files: "ConsoleApp-${{ steps.gitversion.outputs.semVer }}.zip"
+          generate_release_notes: true
         
