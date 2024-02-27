@@ -1,42 +1,24 @@
 name: Create release
 
 on:
-  workflow_run: 
-    workflows:
-      - 'Deploy Package'
-    types:
-      - completed
+  push:
+    tags:
+      - '^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.event == 'push' && github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           fetch-tags: true
-     
-      - uses: actions/download-artifact@v4
-        with: 
-          run-id: ${{ github.event.workflow_run.id }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path: 'Release/'
 
-      - uses: gittools/actions/gitversion/setup@v0
-        with:
-          versionSpec: '5.12.0'
-
-      - uses: gittools/actions/gitversion/execute@v0
-        id: gitversion
-        
-      - uses: vimtor/action-zip@v1.2
-        with: 
-         files: 'Release/'
-         dest: 'ConsoleApp-${{ steps.gitversion.outputs.semVer }}.zip'
+      - name: Get tag version
+        id: get_tag_version
+        run: echo "::set-output name=version::${GITHUB_REF#refs/tags/}"
 
       - uses: softprops/action-gh-release@v0.1.15
         with:
-          tag_name: ${{ steps.gitversion.outputs.semVer }}
-          name: "ConsoleApp-${{ steps.gitversion.outputs.semVer }}"
-          files: "ConsoleApp-${{ steps.gitversion.outputs.semVer }}.zip"
+          tag_name: ${{ steps.get_tag_version.outputs.version }}
+          name: "ConsoleApp-${{ steps.get_tag_version.outputs.version }}"
