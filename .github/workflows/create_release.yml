@@ -12,6 +12,7 @@ jobs:
       - run: |
           echo ${{ github.event.release.tag_name }}
           echo ${{ github.event.release.published_at }}
+          echo ${{ github.event.release.target_commitish }}
   create_release_binary:
     name: create release
     if: ${{ contains(github.ref, 'main') }}
