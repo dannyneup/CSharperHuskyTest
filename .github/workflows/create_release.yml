@@ -14,16 +14,17 @@ jobs:
     runs-on: windows-latest
     env: 
       VERSION_TAG: ${{ github.event.release.tag_name }}
-      RELEASE_DIR: '/Release'
+      ARTIFACTS_DIR: './Release'
+      APP_RELEASE_DIR: '${{ env.ARTIFACTS_DIR }}\bin\ConsoleApp1\release'
     steps:
       - uses: actions/checkout@v4
         with: 
           fetch-depth: 0
       - name: Build project
-        run: dotnet build --configuration Release --output ${{ env.RELEASE_DIR }}
+        run: dotnet build --configuration Release --artifacts-path ${{ env.RELEASE_DIR }}
       - uses: vimtor/action-zip@v1.2
         with:
-          files: ${{ env.RELEASE_DIR }}
+          files: '${{ env.APP_RELEASE_DIR }}/**'
           dest: 'HyperPlan-App_${{ env.VERSION_TAG }}.zip'
       - uses: softprops/action-gh-release@v0.1.15
         with:
