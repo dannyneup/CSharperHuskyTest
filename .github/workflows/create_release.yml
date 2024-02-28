@@ -4,6 +4,8 @@ on:
   release:
     tags:
       - '^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$'
+    types:
+      - published
 
 jobs:
   print_infos:
