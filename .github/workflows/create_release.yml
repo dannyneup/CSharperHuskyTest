@@ -19,7 +19,7 @@ jobs:
   create_release_binary:
     name: create release
     if: ${{ github.event.release.target_commitish ==  'main' }}
-    runs-on: ubuntu-20.04
+    runs-on: windows-latest
     env: 
       VERSION_TAG: ${{ github.event.release.tag_name }}
       RELEASE_DIR: '/Release'
