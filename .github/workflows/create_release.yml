@@ -23,9 +23,8 @@ jobs:
         run: dotnet build --configuration Release --artifacts-path ${{ env.ARTIFACTS_DIR }}
       - uses: vimtor/action-zip@v1.2
         with:
-          files: '${{ env.ARTIFACTS_DIR }}'
+          files: '${{ env.ARTIFACTS_DIR }}\bin\ConsoleApp1\release'
           dest: 'HyperPlan-App_${{ env.VERSION_TAG }}.zip'
-          recursive: true
       - uses: softprops/action-gh-release@v0.1.15
         with:
           tag_name: ${{ env.VERSION_TAG }}
