@@ -8,14 +8,6 @@ on:
       - published
 
 jobs:
-  print_infos:
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo ${{ github.event.release.tag_name }}
-          echo ${{ github.event.release.published_at }}
-          echo ${{ github.event.release.target_commitish }}
-          echo ${{ github.event.release.target_commitish ==  'main' }}
   create_release_binary:
     name: create release
     if: ${{ github.event.release.target_commitish ==  'main' }}
