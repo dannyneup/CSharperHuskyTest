@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          'echo ${{ github.event.release.tag }}'
+          echo ${{ github.event.release.tag }}
   create_release_binary:
     name: create release
     if: ${{ contains(github.ref, 'main') }}
