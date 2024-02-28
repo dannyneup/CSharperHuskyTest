@@ -15,8 +15,10 @@ jobs:
     env: 
       VERSION_TAG: ${{ github.event.release.tag_name }}
       ARTIFACTS_DIR: './Release'
-      APP_RELEASE_DIR: '${{ ARTIFACTS_DIR }}\bin\ConsoleApp1\release'
     steps:
+      - name: set environment variables
+        run: |
+          echo '$ARTIFACTS_DIR\bin\ConsoleApp1\release' >> $APP_RELEASE_DIR
       - uses: actions/checkout@v4
         with: 
           fetch-depth: 0
