@@ -15,10 +15,11 @@ jobs:
           echo ${{ github.event.release.tag_name }}
           echo ${{ github.event.release.published_at }}
           echo ${{ github.event.release.target_commitish }}
+          echo ${{ github.event.release.target_commitish ==  'main' }}
   create_release_binary:
     name: create release
     if: ${{ github.event.release.target_commitish ==  'main' }}
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     env: 
       VERSION_TAG: ${{ github.event.release.tag_name }}
       RELEASE_DIR: '/Release'
