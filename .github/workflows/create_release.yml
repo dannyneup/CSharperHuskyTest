@@ -1,24 +1,26 @@
-name: Create release
+name: Create release binary
 
 on:
-  push:
+  release:
     tags:
-      - '^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$'
+      - '^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  create_release_binary:
+    name: create release
+    if: ${{ contains(github.ref, 'main') }}
+    runs-on: ubuntu-18.04
+    env: 
+      VERSION_TAG: ${{ github.event.release.tag_name }}
+      RELEASE_DIR: '/Release'
     steps:
       - uses: actions/checkout@v4
+      - name: Build project
+        run: dotnet build --configuration Release --output ${{ env.RELEASE_DIR }}
+      - uses: vimtor/action-zip@v1.2
         with:
-          fetch-depth: 0
-          fetch-tags: true
-
-      - name: Get tag version
-        id: get_tag_version
-        run: echo "::set-output name=version::${GITHUB_REF#refs/tags/}"
-
+          files: ${{ env.RELEASE_DIR }}
+          dest: 'HyperPlan-App_${{ env.VERSION_TAG }}.zip'
       - uses: softprops/action-gh-release@v0.1.15
         with:
-          tag_name: ${{ steps.get_tag_version.outputs.version }}
-          name: "ConsoleApp-${{ steps.get_tag_version.outputs.version }}"
+          files: "HyperPlan-App_${{ env.VERSION_TAG }}.zip"
