@@ -15,13 +15,13 @@ jobs:
     env: 
       VERSION_TAG: ${{ github.event.release.tag_name }}
       ARTIFACTS_DIR: './Release'
-      APP_RELEASE_DIR: '${{ env.ARTIFACTS_DIR }}\bin\ConsoleApp1\release'
+      APP_RELEASE_DIR: '${{ ARTIFACTS_DIR }}\bin\ConsoleApp1\release'
     steps:
       - uses: actions/checkout@v4
         with: 
           fetch-depth: 0
       - name: Build project
-        run: dotnet build --configuration Release --artifacts-path ${{ env.RELEASE_DIR }}
+        run: dotnet build --configuration Release --artifacts-path ${{ env.ARTIFACTS_DIR }}
       - uses: vimtor/action-zip@v1.2
         with:
           files: '${{ env.APP_RELEASE_DIR }}/**'
