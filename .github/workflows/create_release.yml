@@ -25,6 +25,8 @@ jobs:
       RELEASE_DIR: '/Release'
     steps:
       - uses: actions/checkout@v4
+        with: 
+          fetch-depth: 0
       - name: Build project
         run: dotnet build --configuration Release --output ${{ env.RELEASE_DIR }}
       - uses: vimtor/action-zip@v1.2
