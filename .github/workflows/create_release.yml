@@ -3,7 +3,7 @@ name: Create release binary
 on:
   release:
     tags:
-      - '^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$'
+      - '^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$'
 
 jobs:
   print_infos:
