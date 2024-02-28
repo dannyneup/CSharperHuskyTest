@@ -16,9 +16,6 @@ jobs:
       VERSION_TAG: ${{ github.event.release.tag_name }}
       ARTIFACTS_DIR: './Release'
     steps:
-      - name: set environment variables
-        run: |
-          echo '$ARTIFACTS_DIR\bin\ConsoleApp1\release' >> $APP_RELEASE_DIR
       - uses: actions/checkout@v4
         with: 
           fetch-depth: 0
@@ -26,7 +23,7 @@ jobs:
         run: dotnet build --configuration Release --artifacts-path ${{ env.ARTIFACTS_DIR }}
       - uses: vimtor/action-zip@v1.2
         with:
-          files: '${{ env.APP_RELEASE_DIR }}/**'
+          files: '${{ env.ARTIFACTS_DIR }}\bin\ConsoleApp1\release\*'
           dest: 'HyperPlan-App_${{ env.VERSION_TAG }}.zip'
       - uses: softprops/action-gh-release@v0.1.15
         with:
