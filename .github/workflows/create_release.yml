@@ -23,4 +23,5 @@ jobs:
           dest: 'HyperPlan-App_${{ env.VERSION_TAG }}.zip'
       - uses: softprops/action-gh-release@v0.1.15
         with:
+          tag_name: ${{ env.VERSION_TAG }}
           files: "HyperPlan-App_${{ env.VERSION_TAG }}.zip"
