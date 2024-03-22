@@ -45,14 +45,10 @@ jobs:
                                       owner: context.repo.owner,
                                       repo: context.repo.repo
                                     })
-              } 
-            catch (error) {
-              if (error.message.includes("TypeError: Cannot read properties of undefined (reading 'repos')")) {
-                console.log("No associated pull request found.");
+            } 
+            catch (TypeError error) {
+              console.log("No associated pull request found.");
                 return null;
-              } else {
-                throw error;
-              }
             }
             return associatedPr.data[0].number;
           result-encoding: string
