@@ -46,9 +46,12 @@ jobs:
                                       repo: context.repo.repo
                                     })
             } 
-            catch (TypeError error) {
-              console.log("No associated pull request found.");
-                return null;
+            catch (error) {
+              if (error instanceof Error){
+                console.log("No associated pull request found.");
+                  return null;
+              } 
+              throw error
             }
             return associatedPr.data[0].number;
           result-encoding: string
