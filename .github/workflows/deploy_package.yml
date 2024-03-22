@@ -55,10 +55,10 @@ jobs:
             }
               
             return associatedPr.data[0].number;
-          result-encoding: string
+          result-encoding: string?
           
       - name: "output pr number if present"
-        if: ${{ steps.get_issue_number.outputs.result != 'null' }}
+        if: ${{ steps.get_issue_number.outputs.result != null }}
         run: echo ${{ steps.get_issue_number.outputs.result }}
         
       - uses: actions/checkout@v4
