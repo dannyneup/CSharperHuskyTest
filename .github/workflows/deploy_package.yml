@@ -49,6 +49,7 @@ jobs:
             } catch (error) {
               if (error instanceof Error){
                 console.log("No associated pull request found.");
+                return;
               }
               throw error;
             }
