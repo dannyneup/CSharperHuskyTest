@@ -30,6 +30,32 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: 'get pull-request number'
+        uses: actions/github-script@v6
+        id: get_issue_number
+        with:
+          script: |
+            if (context.issue.number) {
+              // Return issue number if present
+              return context.issue.number;
+            } 
+            const associatedPr = await github.action.repos.listPullRequestsAssociatedWithCommit({
+                                    commit_sha: context.sha,
+                                    owner: context.repo.owner,
+                                    repo: context.repo.repo
+                                  })
+            if (associatedPr && associatedPr.data && associatedPr.data.length > 0) {
+              // Return associated pull-request number if present
+              return associatedPr.data[0].number;
+            }
+            // Return null if not associated with a pull-request
+            return null;
+          result-encoding: string
+          
+      - name: "output pr number if present"
+        if: ${{ steps.get_issue_number.outputs.result != null }}
+        run: echo ${{ steps.get_issue_number.outputs.result }}
+        
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
