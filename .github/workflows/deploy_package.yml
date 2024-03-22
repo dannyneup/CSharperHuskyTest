@@ -39,17 +39,22 @@ jobs:
               // Return issue number if present
               return context.issue.number;
             } 
-            const associatedPr = await github.action.repos.listPullRequestsAssociatedWithCommit({
-                                    commit_sha: context.sha,
-                                    owner: context.repo.owner,
-                                    repo: context.repo.repo
-                                  })
-            if (associatedPr && associatedPr.data && associatedPr.data.length > 0) {
-              // Return associated pull-request number if present
-              return associatedPr.data[0].number;
+            try {
+              const associatedPr = await github.action.repos.listPullRequestsAssociatedWithCommit({
+                                      commit_sha: context.sha,
+                                      owner: context.repo.owner,
+                                      repo: context.repo.repo
+                                    })
+              } 
+            catch (error) {
+              if (error.message.includes("TypeError: Cannot read properties of undefined (reading 'repos')")) {
+                console.log("No associated pull request found.");
+                return null;
+              } else {
+                throw error;
+              }
             }
-            // Return null if not associated with a pull-request
-            return null;
+            return associatedPr.data[0].number;
           result-encoding: string
           
       - name: "output pr number if present"
