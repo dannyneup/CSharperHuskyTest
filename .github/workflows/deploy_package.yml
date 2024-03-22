@@ -58,7 +58,7 @@ jobs:
           result-encoding: string
           
       - name: "output pr number if present"
-        if: ${{ steps.get_issue_number.outputs.result != undefined }}
+        if: ${{ steps.get_issue_number.outputs.result != 'undefined' }}
         run: echo ${{ steps.get_issue_number.outputs.result }}
         
       - uses: actions/checkout@v4
