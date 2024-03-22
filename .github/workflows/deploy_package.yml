@@ -49,13 +49,12 @@ jobs:
             } catch (error) {
               if (error instanceof Error){
                 console.log("No associated pull request found.");
-                return null;
               }
               throw error;
             }
               
             return associatedPr.data[0].number;
-          result-encoding: string?
+          result-encoding: string
           
       - name: "output pr number if present"
         if: ${{ steps.get_issue_number.outputs.result != null }}
